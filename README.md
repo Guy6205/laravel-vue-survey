@@ -25,6 +25,7 @@ then:
 #### Ports
 
 Laravel: 80
+
 Vite: 5174
     
 #### Database
