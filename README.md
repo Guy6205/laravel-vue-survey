@@ -8,7 +8,7 @@ Shout out to the Codeaholic!
 
 ## Useful Commands
 
-#### Running the project via WSL2 on Windows 11 using Docker & Laravel Sail. 
+#### Running the project via WSL2 on Windows 11 using Docker, Vite & Laravel Sail. 
 
 To run the laravel application from root dir:
     
