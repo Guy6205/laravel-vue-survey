@@ -21,6 +21,11 @@ To run Vue from root dir:
 then:
     
 `npm run dev`
+
+#### Ports
+
+Laravel: 80
+Vite: 5174
     
 #### Database
 
