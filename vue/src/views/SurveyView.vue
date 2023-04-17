@@ -7,7 +7,7 @@
                 </h1>
             </div>
         </template>
-        <pre>{{ model }}</pre>
+        <!-- <pre>{{ model }}</pre> -->
         <form @submit.prevent="saveSurvey" >
             <div class="shadow sm:rounded-md sm:overflow-hidden">
                 <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
@@ -104,8 +104,35 @@
                             </label>
                         </div>
                     </div>
-
                     <!-- /survey fields -->
+
+                    <!-- Survey Questions -->
+                    <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
+                        <h3 class="text-2xl font-semibold flex items-center justify-between">
+                            Questions
+
+                            <button type="button" @click="addQuestion()" class="flex items-center text-sm py-1 px-4 rounded-sm text-white bg-gray-600 hover:bg-gray-700">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                </svg>
+
+                                Add Question
+                            </button>
+                        </h3>
+                        <div v-if="!model.questions.length" class="text-center text-gray-600">
+                            You don't have any questions yet
+                        </div>
+                        <div v-for="(question, index) in model.questions" :key="question.id">
+                            <QuestionEditor 
+                                :question="question" 
+                                :index="index" 
+                                @change="questionChange" 
+                                @addQuestion="addQuestion"
+                                @deleteQuestion="deleteQuestion"
+                            />
+                        </div>
+                    </div>
+                    <!-- /Survey Questions -->
 
                     <!-- form footer -->
                     <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
@@ -125,6 +152,7 @@
     import store from '../store';
     import  {useRoute } from 'vue-router';
     import PageComponent from '../components/PageComponent.vue';
+    import QuestionEditor from '../components/editor/QuestionEditor.vue';
 
     const route = useRoute();
 
