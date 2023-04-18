@@ -116,6 +116,7 @@ const store = createStore({
             token: sessionStorage.getItem('TOKEN'),
         },
         surveys: [...tmpSurveys],
+        questionTypes: ['text', 'select', 'checkbox', 'radio','textarea']
     },
     getters: {},
     actions: {
