@@ -151,11 +151,12 @@
     import { v4 as uuidv4 } from 'uuid';
     import { ref } from 'vue';
     import store from '../store';
-    import  {useRoute } from 'vue-router';
+    import  { useRoute, useRouter } from 'vue-router';
     import PageComponent from '../components/PageComponent.vue';
     import QuestionEditor from '../components/editor/QuestionEditor.vue';
 
     const route = useRoute();
+    const router = useRouter();
 
     // empty survey model for creating a new survey
     let model = ref({
@@ -199,6 +200,15 @@
             }
             return q;
         })
+    }
+
+    function saveSurvey() {
+        store.dispatch('saveSurvey', model.value).then(({ data }) => {
+            router.push({
+                name: 'SurveyView',
+                params: { id: data.data.id }
+            })
+        });
     }
 
 </script>
