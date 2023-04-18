@@ -21,8 +21,8 @@
                         </label>
                         <div class="mt-1 flex items-center">
                             <img 
-                                v-if="model.image" 
-                                :src="model.image" 
+                                v-if="model.image_url" 
+                                :src="model.image_url" 
                                 :alt="model.title"
                                 class="w-64 h-48 object-cover"
                             />
@@ -35,7 +35,7 @@
                                 </svg>
                             </span>
                             <button tyoe="button" class="relative overflow-hidden ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover-bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                <input type="file" class="absolute left-0 top-0 right-0 bottom-0 opacity-0 cursor-pointer" />
+                                <input type="file" @change="onImageChoose" class="absolute left-0 top-0 right-0 bottom-0 opacity-0 cursor-pointer" />
                                 Change
                             </button>
                         </div>
@@ -173,6 +173,21 @@
         model.value = store.state.surveys.find(
             (s) => s.id === parseInt(route.params.id)
         );
+    }
+
+    function onImageChoose (ev) {
+        // get the first file from the file list
+        const file = ev.target.files[0];
+
+        // create a new file reader for the preview
+        const reader = new FileReader();
+        reader.onload = () => {
+            // image is used to send the image to the server
+            model.value.image = reader.result;
+            // image_url is used to fetch and display the image
+            model.value.image_url = reader.result;
+        };
+        reader.readAsDataURL(file);
     }
 
     function addQuestion(index) {
