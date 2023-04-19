@@ -3,12 +3,15 @@
         <template v-slot:header>
             <div class="flex items-center justify-between">
                 <h1 class="text-3xl font-bold text-gray-900">
-                    {{ model.id ? model.title : 'New Survey' }}
+                    {{ route.params.id ? model.title : 'New Survey' }}
                 </h1>
             </div>
         </template>
+        <div v-if="surveyLoading" class="flex justify-center">
+            Loading...
+        </div>
         <!-- <pre>{{ model }}</pre> -->
-        <form @submit.prevent="saveSurvey" >
+        <form v-else @submit.prevent="saveSurvey" >
             <div class="shadow sm:rounded-md sm:overflow-hidden">
                 <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
 
@@ -149,7 +152,7 @@
 
 <script setup>
     import { v4 as uuidv4 } from 'uuid';
-    import { ref, watch } from 'vue';
+    import { ref, watch, computed } from 'vue';
     import store from '../store';
     import  { useRoute, useRouter } from 'vue-router';
     import PageComponent from '../components/PageComponent.vue';
@@ -157,6 +160,7 @@
 
     const route = useRoute();
     const router = useRouter();
+    const surveyLoading = computed(() => store.state.currentSurvey.loading);
 
     // empty survey model for creating a new survey
     let model = ref({
