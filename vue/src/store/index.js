@@ -143,7 +143,7 @@ const store = createStore({
             let response;
             if (survey.id) {
                 response = axiosClient
-                    .put(`/survey/$survey.id`, survey)
+                    .put(`/survey/${survey.id}`, survey)
                     .then((res) => {
                         commit('updateSurvey', res.data);
                         return res;

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreSurveyRequest;
 use App\Http\Requests\UpdateSurveyRequest;
 use App\Models\Survey;
-use App\Http\Resources\SurveyResource;
+use App\Http\Resources\SurveyResource;;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
@@ -68,7 +68,7 @@ class SurveyController extends Controller
      */
     public function update(UpdateSurveyRequest $request, Survey $survey)
     {
-        $request = $request->validated();
+        $data = $request->validated();
 
         // if image is supplied, save on local filesystem
         if (isset($data['image'])) {
@@ -129,7 +129,7 @@ class SurveyController extends Controller
             }
 
         } else {
-            throw new Exception('Invalid image data URI');
+            throw new \Exception('Invalid image data URI');
         }
 
         $dir = 'images/';
