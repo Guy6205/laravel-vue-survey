@@ -149,7 +149,7 @@
 
 <script setup>
     import { v4 as uuidv4 } from 'uuid';
-    import { ref } from 'vue';
+    import { ref, watch } from 'vue';
     import store from '../store';
     import  { useRoute, useRouter } from 'vue-router';
     import PageComponent from '../components/PageComponent.vue';
@@ -168,11 +168,21 @@
         questions: [],
     });
 
+    // watch the current survey in the store
+    // and update the local model when it changes
+    watch(
+        () => store.state.currentSurvey.data,
+        (newVal, oldVal) => {
+            model.value = {
+                ...JSON.parse(JSON.stringify(newVal)),
+                status: newVal.status !== 'draft',
+            };
+        }
+    );
+
     // if we have an id in the route params, we are editing an existing survey
     if (route.params.id) {
-        model.value = store.state.surveys.find(
-            (s) => s.id === parseInt(route.params.id)
-        );
+        store.dispatch('getSurvey', route.params.id);
     }
 
     function onImageChoose (ev) {
