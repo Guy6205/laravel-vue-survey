@@ -163,7 +163,7 @@
         title: '',
         status: false,
         description: null,
-        image: null,
+        image_url: null,
         expire_date: null,
         questions: [],
     });

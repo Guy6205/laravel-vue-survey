@@ -145,12 +145,12 @@ const store = createStore({
                 response = axiosClient
                     .put(`/survey/${survey.id}`, survey)
                     .then((res) => {
-                        commit('updateSurvey', res.data);
+                        commit('setCurrentSurvey', res.data);
                         return res;
                     })
             } else {
                 response = axiosClient.post('/survey', survey).then((res) => {
-                    commit('saveSurvey', res.data);
+                    commit('setCurrentSurvey', res.data);
                     return res;
                 });
             }
@@ -188,17 +188,6 @@ const store = createStore({
         },
         saveSurvey: (state, survey) => {
             state.surveys = [...state.surveys, survey.data];
-        },
-        updateSurvey: (state, survey) => {
-            // map each survey to its own object
-            // then find the survey with the same id as the one we are updating
-            // and return it
-            state.surveys = state.surveys.map((s) => {
-                if (s.id == survey.data.id) {
-                    return survey.data;
-                }
-                return s;
-            });
         },
         logout: state => {
             state.user.data = {};

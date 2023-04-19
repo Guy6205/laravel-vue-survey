@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\URL;
 
 class SurveyResource extends JsonResource
 {
@@ -18,7 +19,7 @@ class SurveyResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'image' => $this->image,
+            'image_url' => $this->image ? URL::to($this->image) : null,
             'slug' => $this->slug,
             'description' => $this->description,
             'status' => $this->status !== 'draft',
