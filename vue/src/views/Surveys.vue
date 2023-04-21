@@ -15,7 +15,12 @@
       </div>
     </template>
     <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3">
-      <SurveyListItem v-for="survey in surveys" :key="survey.id" :survey="survey" @delete="deleteSurvey(survey)"/>
+      <SurveyListItem 
+        v-for="(survey, ind) in surveys" 
+        :key="survey.id" 
+        :survey="survey"
+        @delete="deleteSurvey(survey)"
+      />
     </div>
   </PageComponent>
 </template>
