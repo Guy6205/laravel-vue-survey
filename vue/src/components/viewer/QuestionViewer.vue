@@ -78,7 +78,7 @@
                 <input 
                     type="text"
                     :value="modelValue"
-                    @change="emits('update:ModelValue', $event.target.value)"
+                    @input="emits('update:modelValue', $event.target.value)"
                     class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                 />
 
@@ -88,7 +88,7 @@
             <div v-else-if="question.type === 'textarea'">
                 <input 
                     :value="modelValue"
-                    @change="emits('update:ModelValue', $event.target.value)"
+                    @input="emits('update:modelValue', $event.target.value)"
                     class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                 />
             </div>
@@ -111,6 +111,10 @@ const emits = defineEmits(['update:modelValue']);
 let model;
 if (question.type === 'checkbox') {
     model = ref({});
+}
+
+function shouldHaveOptions() {
+  return ["select", "radio", "checkbox"].includes(question.type);
 }
 
 function onCheckBoxChange($event) {

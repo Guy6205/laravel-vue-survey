@@ -19,7 +19,6 @@
             	</span>
           </Alert>
 
-          <input type="hidden" name="remember" value="true" />
           <div class="-space-y-px rounded-md shadow-sm">
             <div>
               <label for="email-address" class="sr-only">Email address</label>

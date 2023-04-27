@@ -12,17 +12,13 @@
                 </div>
             </div>
 
-            <div
-                v-if="surveyFinished"
-                class="py-8 px-6 bg-emerald-600 text-white w-[600px] mx-auto"
-            >
+            <div v-if="surveyFinished" class="py-8 px-6 bg-emerald-600 text-white w-[600px] mx-auto">
                 <div class="text-xl mb-3 font-semibold">
                     Thank you for participating in this survey.
                 </div>
                 <button @click="submitAnotherResponse" type="button" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                Submit another response
-            </button>
-
+                    Submit another response
+                </button>
             </div>
 
             <div v-else>
@@ -34,11 +30,12 @@
                         :index="index"
                     ></QuestionViewer>
                 </div>
-            </div>
 
-            <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                Submit
-            </button>
+                <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    Submit
+                </button>
+            </div>
+ 
         </form>
     </div>>
 </template>
