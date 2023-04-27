@@ -88,6 +88,7 @@
                         <label for="expire_date" class="block text-sm font-medium text-gray-700">
                             Expire Date
                         </label>
+                        <pre>{{ model.expire_date }}</pre>
                         <input 
                             type="date"
                             name="expire_date"
