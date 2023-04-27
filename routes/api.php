@@ -16,6 +16,7 @@ use App\Http\Controllers\SurveyController;
 |
 */
 
+// Authenticated routes
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user', function (Request $request) {
         return $request->user();
@@ -24,5 +25,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::resource('/survey', \App\Http\Controllers\SurveyController::class);
 });
 
+// Public routes
+Route::get('/survey-by-slug/{survey:slug}', [SurveyController::class, 'showForGuest']);
+Route::post('survey/{survey}/answer', [SurveyController::class, 'storeAnswer']);
+
+// Auth routes
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
