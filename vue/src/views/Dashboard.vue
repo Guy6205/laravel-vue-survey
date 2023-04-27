@@ -6,7 +6,7 @@
 			class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 text-gray-700"
 		>
 			<div 
-				class="bg-white shadow-md p-3 text-center flex flex-col order-1 lg:order-2"
+				class="bg-white shadow-md p-3 text-center flex flex-col order-1 lg:order-2 rounded-md"
 			>
 				<h3 class="text-2xl font-semibold">Total Surveys</h3>
 				<div
@@ -17,7 +17,7 @@
 			</div>
 
 			<div 
-				class="bg-white shadow-md p-3 text-center flex flex-col order-2 lg:order-4"
+				class="bg-white shadow-md p-3 text-center flex flex-col order-2 lg:order-4 rounded-md"
 			>
 			<h3 class="text-2xl font-semibold">Total Answers</h3>
 				<div
@@ -28,35 +28,41 @@
 			</div>
 
 			<div 
-				class="row-span-2 bg-white shadow-md p-4 order-3 lg:order-1"
+				class="row-span-2 bg-white shadow-md p-4 order-3 lg:order-1 rounded-md"
 			>
 				<h3 class="text-2xl font-semibold">Latest Survey</h3>
 				<img 
 					:src="data.latestSurvey.image_url"
-					class="w-[240px] mx-auto"
+					class="w-[240px] mx-auto rounded-md my-4 shadow-md"
 					alt=""
 				/>
 				<h3 class="font-bold text-xxl mb-3">{{ data.latestSurvey.title }}</h3>
+				<hr class="my-4" />
 				<div class="flex justify-between text-sm mb-1">
 					<div>Upload Date:</div>
 					<div>{{ data.latestSurvey.created_at }}</div>
 				</div>
+				<hr class="my-2" />
 				<div class="flex justify-between text-sm mb-1">
 					<div>Expire Date:</div>
 					<div>{{ data.latestSurvey.expire_date }}</div>
 				</div>
+				<hr class="my-2" />
 				<div class="flex justify-between text-sm mb-1">
 					<div>Status:</div>
 					<div>{{ data.latestSurvey.status ? 'Active' : 'Draft' }}</div>
 				</div>
+				<hr class="my-2" />
 				<div class="flex justify-between text-sm mb-1">
 					<div>Questions:</div>
 					<div>{{ data.latestSurvey.questions }}</div>
 				</div>
+				<hr class="my-2" />
 				<div class="flex justify-between text-sm mb-3">
 					<div>Answers:</div>
 					<div>{{ data.latestSurvey.answers }}</div>
 				</div>
+				<hr class="my-2" />
 				<div class="flex justify-between">
 					<router-link
 						:to="{ name: 'SurveyView', params: { id: data.latestSurvey.id } }"
@@ -81,7 +87,7 @@
 			</div>
 
 			<div 
-				class="bg-white shadow-md p-3 row-span-2 order-4 lg:order-3"
+				class="bg-white shadow-md p-3 row-span-2 order-4 lg:order-3 rounded-md"
 			>
 				<div class="flex justify-between items-center mb-3 px-2">
 					<h3 class="text-2xl font-semibold">Latest Answers</h3>
@@ -90,6 +96,9 @@
 						View all
 					</a>
 				</div>
+
+				<hr class="my-4" />
+
 				<a
 					href="#"
 					v-for="answer of data.latestAnswers"
@@ -101,6 +110,8 @@
 						Answer made at:
 						<i class="font-semibold">{{ answer.end_date }}</i>
 					</small>
+
+					<hr class="mt-2" />
 				</a>
 			</div>
 		

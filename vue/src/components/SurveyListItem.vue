@@ -1,8 +1,8 @@
 <template>
     <div
-    class="flex flex-col py-4 px-6 shadow-md bg-white hover:bg-gray-50 h-[470px]"  
+    class="flex flex-col py-4 px-6 shadow-md bg-white hover:bg-gray-50 h-[470px] rounded-md"  
     >
-        <img :src="survey.image_url" alt="" class="w-full h-48 object-cover" />
+        <img :src="survey.image_url" alt="" class="w-full h-48 object-cover rounded-md" />
         <h4 class="mt-4 text-lg font-bold">{{ survey.title }}</h4>
         <div v-html="survey.description" class="overflow-hidden flex-1"></div>
 

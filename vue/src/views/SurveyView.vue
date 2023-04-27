@@ -34,7 +34,7 @@
                                 v-if="model.image_url" 
                                 :src="model.image_url" 
                                 :alt="model.title"
-                                class="w-64 h-48 object-cover"
+                                class="w-64 h-48 object-cover rounded-md"
                             />
                             <span
                             v-else
