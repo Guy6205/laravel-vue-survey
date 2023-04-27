@@ -16,7 +16,7 @@
             <div v-if="question.type === 'select'">
                 <select 
                     :value="modelValue"
-                    @change="emits('update:ModelValue', $event.target.value)"
+                    @input="emits('update:modelValue', $event.target.value)"
                     class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 >   
                     <option value="">Please Select</option>
@@ -37,7 +37,7 @@
                         :id="option.uuid"
                         :name="'question' + question.id"
                         :value="option.value"
-                        @change="emits('update:ModelValue', $event.target.value)"
+                        @input="emits('update:modelValue', $event.target.value)"
                         type="radio"
                         class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
                     />
