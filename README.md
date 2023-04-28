@@ -6,6 +6,22 @@ https://www.youtube.com/watch?v=WLQDpY7lOLg&ab_channel=TheCodeholic
 
 Shout out to the Codeaholic!
 
+## Setup
+
+clone the repo
+
+run:
+
+`npm install`
+
+run:
+
+`composer install`
+
+to migrate:
+
+`./vendor/bin/sail artisan migrate`
+
 ## Useful Commands
 
 #### Running the project via WSL2 on Windows 11 using Docker, Vite & Laravel Sail. 
